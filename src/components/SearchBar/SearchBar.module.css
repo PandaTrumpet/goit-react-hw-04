@@ -1,0 +1,24 @@
+.serachInput {
+  padding-left: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 300px;
+}
+
+.mainForm {
+  position: relative;
+}
+.btn {
+  position: absolute;
+  top: 6px;
+  left: 2px;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.headerForm {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3px;
+  background-color: rgb(102, 102, 240);
+}

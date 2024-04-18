@@ -9,7 +9,7 @@ export const fetchImages = async (nameImage, currentPage) => {
     params: {
       page: currentPage,
       query: nameImage,
-      per_page: 6,
+      per_page: 12,
     },
   });
   console.log(response.data.results);

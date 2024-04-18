@@ -1,12 +1,12 @@
-export default function ImageGallery({ images }) {
+import css from "./ImageGallery.module.css";
+import ImageCard from "../ImageCard/ImageCard";
+export default function ImageGallery({ images, openModal }) {
   return (
-    <ul>
+    <ul className={css.imageList}>
       {images.map((image) => {
         return (
           <li key={image.id}>
-            <div>
-              <img src={image.urls.small} alt={image.alt_description} />
-            </div>
+            <ImageCard image={image} openModal={openModal} />
           </li>
         );
       })}

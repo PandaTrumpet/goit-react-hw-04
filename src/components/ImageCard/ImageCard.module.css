@@ -1,0 +1,5 @@
+.imageCard {
+  width: 345px;
+  height: 250px;
+  flex-basis: calc((100%-30px) / 4);
+}

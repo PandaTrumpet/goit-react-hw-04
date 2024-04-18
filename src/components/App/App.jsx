@@ -4,7 +4,9 @@ import toast, { Toaster } from "react-hot-toast";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import ImageGallery from "../ImageGallery/ImageGallery";
 import Loader from "../Loader/Loader";
+import ImageModal from "../ImageModal/ImageModal";
 import { fetchImages } from "../../showImages";
+import css from "./App.module.css";
 function App() {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -44,13 +46,47 @@ function App() {
     console.log(page);
     setPage(page + 1);
   };
+
+  // ==========================================Modal============================================================
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const openModal = (image) => {
+    setSelectedImage(image);
+    setModalIsOpen(true);
+  };
+  const closeModal = () => {
+    setSelectedImage(null);
+    setModalIsOpen(false);
+  };
+
+  // ==========================================Modal============================================================
+
   return (
     <>
       <SearchBar onSubmit={handleSearch} />
       {loading && <Loader />}
 
-      {images.length > 0 ? <ImageGallery images={images} /> : <ErrorMessage />}
-      {images.length > 0 && <button onClick={handllePage}>Load more</button>}
+      {images.length > 0 ? (
+        <>
+          <ImageGallery images={images} openModal={openModal} />
+          <ImageModal
+            images={images}
+            open={modalIsOpen}
+            closeModal={closeModal}
+            selectedImage={selectedImage}
+            openModal={openModal}
+          />
+        </>
+      ) : (
+        <ErrorMessage />
+      )}
+
+      {images.length > 0 && (
+        <button className={css.btn} onClick={handllePage}>
+          Load more
+        </button>
+      )}
     </>
   );
 }
