@@ -1,4 +1,8 @@
 .modalPhotoContainer {
   display: flex;
   justify-content: space-around;
+  background-color: rgb(102, 102, 240);
+}
+.modalText {
+  color: #fff;
 }

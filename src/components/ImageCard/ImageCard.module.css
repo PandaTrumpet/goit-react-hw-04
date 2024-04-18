@@ -1,5 +1,10 @@
 .imageCard {
   width: 345px;
   height: 250px;
-  flex-basis: calc((100%-30px) / 4);
+  transition: transform 300ms ease-in-out;
+  cursor: zoom-in;
+}
+
+.imageCard:hover {
+  transform: scale(1.05);
 }

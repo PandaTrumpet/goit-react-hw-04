@@ -41,8 +41,12 @@ export default function ImageModal({ open, closeModal, selectedImage }) {
                 alt={selectedImage.alt_description}
               />
               <div className={css.modalPhotoContainer}>
-                <p>Photo by: {selectedImage.user.name}</p>
-                <p>Instagram: {selectedImage.user.instagram_username}</p>
+                <p className={css.modalText}>
+                  Photo by: {selectedImage.user.name}
+                </p>
+                <p className={css.modalText}>
+                  Instagram: {selectedImage.user.instagram_username}
+                </p>
               </div>
             </>
           )}
