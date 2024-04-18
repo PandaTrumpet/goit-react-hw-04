@@ -9,27 +9,48 @@ function App() {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const handleSearch = async (nameImage) => {
-    try {
-      setLoading(true);
-      setImages([]);
-      const data = await fetchImages(nameImage);
-      setImages(data);
-      setLoading(false);
-    } catch (error) {
-      toast.error("This is an error!");
-      setError(true);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const [page, setPage] = useState(1);
+  const [query, setQuuery] = useState("");
 
+  useEffect(() => {
+    if (query === "") {
+      return;
+    }
+    async function getImages() {
+      try {
+        setLoading(true);
+
+        const data = await fetchImages(query, page);
+        setImages((prevImages) => {
+          return [...prevImages, ...data];
+        });
+        setLoading(false);
+      } catch (error) {
+        toast.error("This is an error!");
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    }
+    getImages();
+  }, [query, page]);
+
+  const handleSearch = async (newQuery) => {
+    setQuuery(newQuery);
+    setPage(1);
+    setImages([]);
+  };
+  const handllePage = () => {
+    console.log(page);
+    setPage(page + 1);
+  };
   return (
     <>
       <SearchBar onSubmit={handleSearch} />
       {loading && <Loader />}
 
       {images.length > 0 ? <ImageGallery images={images} /> : <ErrorMessage />}
+      {images.length > 0 && <button onClick={handllePage}>Load more</button>}
     </>
   );
 }
