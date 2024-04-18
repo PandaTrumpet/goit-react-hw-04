@@ -1,0 +1,12 @@
+.btn {
+  margin: 0 auto;
+  display: block;
+  color: #fff;
+  background-color: rgb(102, 102, 240);
+  margin-top: 5px;
+  transition: background-color 300ms ease-in-out;
+}
+
+.btn:hover {
+  background-color: rgb(131, 131, 236);
+}

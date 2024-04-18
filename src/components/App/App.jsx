@@ -6,7 +6,8 @@ import ImageGallery from "../ImageGallery/ImageGallery";
 import Loader from "../Loader/Loader";
 import ImageModal from "../ImageModal/ImageModal";
 import { fetchImages } from "../../showImages";
-import css from "./App.module.css";
+import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
+
 function App() {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -81,11 +82,7 @@ function App() {
         <ErrorMessage />
       )}
       {loading && <Loader />}
-      {images.length > 0 && (
-        <button className={css.btn} onClick={handllePage}>
-          Load more
-        </button>
-      )}
+      {images.length > 0 && <LoadMoreBtn onClick={handllePage} />}
     </>
   );
 }
