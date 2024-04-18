@@ -65,7 +65,6 @@ function App() {
   return (
     <>
       <SearchBar onSubmit={handleSearch} />
-      {loading && <Loader />}
 
       {images.length > 0 ? (
         <>
@@ -81,7 +80,7 @@ function App() {
       ) : (
         <ErrorMessage />
       )}
-
+      {loading && <Loader />}
       {images.length > 0 && (
         <button className={css.btn} onClick={handllePage}>
           Load more
