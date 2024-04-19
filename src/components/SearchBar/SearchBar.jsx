@@ -1,8 +1,11 @@
 import css from "./SearchBar.module.css";
 import { CiSearch } from "react-icons/ci";
-export default function SearchBar({ onSubmit }) {
+export default function SearchBar({ onSubmit, query, inputError }) {
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (query === "") {
+      inputError();
+    }
     const form = e.target;
     const nameImage = form.elements.search.value;
     onSubmit(nameImage);

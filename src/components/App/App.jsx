@@ -42,7 +42,9 @@ function App() {
     setQuuery(newQuery);
     setPage(1);
     setImages([]);
+    setError(false);
   };
+
   const handllePage = () => {
     console.log(page);
     setPage(page + 1);
@@ -60,12 +62,18 @@ function App() {
     setSelectedImage(null);
     setModalIsOpen(false);
   };
-
+  const inputError = () => {
+    toast.error("Enter the text!!!");
+  };
   // ==========================================Modal============================================================
 
   return (
     <>
-      <SearchBar onSubmit={handleSearch} />
+      <SearchBar
+        onSubmit={handleSearch}
+        inputError={inputError}
+        query={query}
+      />
 
       {images.length > 0 ? (
         <>
@@ -79,7 +87,7 @@ function App() {
           />
         </>
       ) : (
-        <ErrorMessage />
+        <ErrorMessage images={images} query={query} />
       )}
       {loading && <Loader />}
       {images.length > 0 && <LoadMoreBtn onClick={handllePage} />}
