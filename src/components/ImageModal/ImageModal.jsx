@@ -31,6 +31,7 @@ export default function ImageModal({ open, closeModal, selectedImage }) {
           onRequestClose={closeModal}
           style={customStyles}
           contentLabel="Image Modal"
+          ariaHideApp={false}
         >
           {selectedImage && (
             <>
